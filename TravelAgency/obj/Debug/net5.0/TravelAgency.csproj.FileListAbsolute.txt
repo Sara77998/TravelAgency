@@ -83,3 +83,5 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\ref\TravelAgency.dll
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\TravelAgency.pdb
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\TravelAgency.genruntimeconfig.cache
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Domain.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Domain.pdb

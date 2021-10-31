@@ -8,7 +8,7 @@ namespace Domain
 {
     public class Gost
     {
-        public int PasosID { get; set; }
+        public int GostID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
