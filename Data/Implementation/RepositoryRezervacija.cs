@@ -17,7 +17,7 @@ namespace Data.Implementation
         }
         public void Add(Rezervacija s)
         {
-            throw new NotImplementedException();
+            context.Add(s);
         }
 
         public void Delete(Rezervacija s)
@@ -32,7 +32,7 @@ namespace Data.Implementation
 
         public List<Rezervacija> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Rezervacije.ToList();
         }
 
         public List<Rezervacija> Search(Expression<Func<Rezervacija, bool>> pred)

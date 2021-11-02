@@ -32,7 +32,7 @@ namespace Data.Implementation
 
         public List<Hotel> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Hoteli.ToList();
         }
 
         public List<Hotel> Search(Expression<Func<Hotel, bool>> pred)

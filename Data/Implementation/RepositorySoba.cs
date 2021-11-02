@@ -17,12 +17,12 @@ namespace Data.Implementation
         }
         public void Add(Soba s)
         {
-            throw new NotImplementedException();
+            context.Add(s);
         }
 
         public void Delete(Soba s)
         {
-            throw new NotImplementedException();
+            context.Remove(s);
         }
 
         public Soba FindById(int id)
@@ -32,12 +32,12 @@ namespace Data.Implementation
 
         public List<Soba> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Sobe.ToList();
         }
 
         public List<Soba> Search(Expression<Func<Soba, bool>> pred)
         {
-            throw new NotImplementedException();
+            return context.Sobe.Where(pred).ToList();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Data.Implementation
         }
         public void Add(Gost s)
         {
-            throw new NotImplementedException();
+            context.Add(s);
         }
 
         public void Delete(Gost s)
@@ -27,17 +27,18 @@ namespace Data.Implementation
 
         public Gost FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Gosti.FirstOrDefault(g => g.GostID == id);
         }
 
         public List<Gost> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Gosti.ToList();
         }
 
         public List<Gost> Search(Expression<Func<Gost, bool>> pred)
         {
-            throw new NotImplementedException();
+            return context.Gosti.Where(pred).ToList();
+
         }
     }
 }

@@ -35,6 +35,11 @@ namespace Data.Implementation
             throw new NotImplementedException();
         }
 
+        public Agent GetByUsernameAndPassword(Agent agent)
+        {
+            return context.Agenti.Single(a => a.Username == agent.Username && a.Password == agent.Password);
+        }
+
         public List<Agent> Search(Expression<Func<Agent, bool>> pred)
         {
             throw new NotImplementedException();

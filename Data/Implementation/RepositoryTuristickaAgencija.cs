@@ -32,7 +32,7 @@ namespace Data.Implementation
 
         public List<TuristickaAgencija> GetAll()
         {
-            throw new NotImplementedException();
+            return context.TuristickeAgencije.ToList();
         }
 
         public List<TuristickaAgencija> Search(Expression<Func<TuristickaAgencija, bool>> pred)

@@ -9,5 +9,6 @@ namespace Data
 {
     public interface IRepositoryAgent : IRepository<Agent>
     {
+        Agent GetByUsernameAndPassword(Agent agent);
     }
 }
