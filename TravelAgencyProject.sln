@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency", "TravelAgency\TravelAgency.csproj", "{507BCD60-0E86-4480-A91D-80966513282E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgency", "TravelAgency\TravelAgency.csproj", "{507BCD60-0E86-4480-A91D-80966513282E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{56C38D76-A22B-452E-B852-1DDA11AEE5FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{56C38D76-A22B-452E-B852-1DDA11AEE5FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{139EC4AD-8C09-41C3-A14F-D0F066FAF0E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{56C38D76-A22B-452E-B852-1DDA11AEE5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56C38D76-A22B-452E-B852-1DDA11AEE5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56C38D76-A22B-452E-B852-1DDA11AEE5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139EC4AD-8C09-41C3-A14F-D0F066FAF0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139EC4AD-8C09-41C3-A14F-D0F066FAF0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139EC4AD-8C09-41C3-A14F-D0F066FAF0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139EC4AD-8C09-41C3-A14F-D0F066FAF0E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
