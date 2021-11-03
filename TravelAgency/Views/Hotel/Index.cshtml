@@ -1,0 +1,53 @@
+﻿@model List<Hotel>
+@{ 
+    ViewData["Title"] = "Hoteli";
+}
+
+<h1>Hoteli</h1>
+<div class="d-grid gap-2">
+    @*<button type="button" class="btn btn-outline-dark" asp-area="" asp-controller="Hotel" asp-action="Create">Kreiraj novi</button>*@
+    <a class="btn btn-outline-dark" asp-area="" asp-controller="Hotel" asp-action="Create">Kreiraj novi</a>
+</div>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Naziv</th>
+            <th scope="col">Zemlja</th>
+            <th scope="col">Adresa</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefon</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zemlja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>            
+            <td>
+                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.HotelID">                  
+                    Details
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -17,17 +17,17 @@ namespace Data.Implementation
         }
         public void Add(Hotel s)
         {
-            throw new NotImplementedException();
+            context.Add(s);
         }
 
         public void Delete(Hotel s)
         {
-            throw new NotImplementedException();
+            context.Remove(s);
         }
 
         public Hotel FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Hoteli.FirstOrDefault(h => h.HotelID == id);
         }
 
         public List<Hotel> GetAll()
@@ -37,7 +37,7 @@ namespace Data.Implementation
 
         public List<Hotel> Search(Expression<Func<Hotel, bool>> pred)
         {
-            throw new NotImplementedException();
+            return context.Hoteli.Where(pred).ToList();
         }
     }
 }

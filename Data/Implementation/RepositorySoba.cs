@@ -27,7 +27,7 @@ namespace Data.Implementation
 
         public Soba FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Sobe.First(s => s.SobaID == id);
         }
 
         public List<Soba> GetAll()
