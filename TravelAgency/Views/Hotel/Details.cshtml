@@ -42,9 +42,11 @@
         </div>
     </div>
 </div>
-@*<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-danger" asp-action="Delete">Obrisi hotel</button>
-    </div>*@
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<br />
 <a asp-controller="Hotel" asp-action="Delete" asp-route-id="@Model.HotelID" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">
     Obrisi hotel
 </a>

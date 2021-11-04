@@ -19,12 +19,14 @@ namespace Domain
         public string Adresa { get; set; }
         [Required]
         [DisplayName("Broj zvezdica")]
-        
+        [Range(1, 5,
+        ErrorMessage = "Broj zvezdica mora imati vrednost od 1 do 5")]
         public int BrojZvezdinca { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+        
         public string Telefon { get; set; }
         public override string ToString()
         {

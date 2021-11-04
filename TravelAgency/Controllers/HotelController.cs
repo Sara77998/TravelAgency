@@ -53,7 +53,7 @@ namespace TravelAgency.Controllers
             bool exists = uow.Hotel.Search(h => h.Naziv == hotel.Naziv).Any();
             if (exists)
             {
-                ModelState.AddModelError("Hotel name", "Ovaj hotel vec postoji u sistemu!");
+                ModelState.AddModelError("HotelNaziv", "Ovaj hotel vec postoji u sistemu!");
                 return View("Create");
             }
             uow.Hotel.Add(hotel);

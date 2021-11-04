@@ -148,3 +148,7 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Hotel\Create.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Index.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Create.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Details.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Edit.cshtml.g.cs
