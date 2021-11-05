@@ -2,7 +2,61 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+<div class="section">
+
+    <h1>Explore The World With Us!</h1>
+
+    <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted style="width: 100%; height: 100%;">
+            <source src="~/videos/Pexels Videos 2547258.mp4" type="video/mp4">
+        </video>
+    </div>
+
 </div>
+
+
+<style>
+    .section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+        .section h1 {
+            text-align: center;
+            font-size: 6rem;
+            font-family: "Cookie";
+            padding: 20px;
+            margin: 15px;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+    .video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .color-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: lightblue;
+        width: 100%;
+        height: 100vh;
+        opacity: 0.1;
+    }
+</style>
