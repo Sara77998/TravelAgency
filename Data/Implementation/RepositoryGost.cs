@@ -40,5 +40,10 @@ namespace Data.Implementation
             return context.Gosti.Where(pred).ToList();
 
         }
+
+        public void Update(Gost gost)
+        {
+            context.Gosti.Update(gost);
+        }
     }
 }

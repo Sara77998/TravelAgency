@@ -20,8 +20,8 @@ namespace TravelAgency.Controllers
         // GET: HotelController
         public ActionResult Index()
         {
-            List<Hotel> hoteli = uow.Hotel.GetAll().ToList();
-            return View(hoteli);
+            List<Hotel> model = uow.Hotel.GetAll().ToList();
+            return View(model);
         }
 
         // GET: HotelController/Details/5

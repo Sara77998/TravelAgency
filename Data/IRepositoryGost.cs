@@ -9,5 +9,6 @@ namespace Data
 {
     public interface IRepositoryGost : IRepository<Gost>
     {
+        void Update(Gost gost);
     }
 }
