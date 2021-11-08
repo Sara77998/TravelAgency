@@ -1,11 +1,11 @@
 ﻿@model Domain.Soba
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Delete";
 }
 
 <div class="card">
-    <p>Details</p>
+    <p>Da li ste sigurni da zelite da obrisete ovu sobu</p>
     <hr />
     <div>
         <dl class="row">
@@ -40,31 +40,34 @@
                 @Html.DisplayFor(model => model.Zauzeta)
             </dd>
         </dl>
-        <div>
-            <a class="btn btn-outline-dark btn-block" asp-action="Index">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-        </div>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="SobaID" />                
+                <input type="submit" value="Delete" class="btn btn-danger btn-block" />
+                <hr />
+                <a asp-action="Index" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i></a>
+            </form>
+        
     </div>
- 
 </div>
-<img class="slika" src ="~/images/Sobe.jpg" />
+<img class="slika" src="~/images/Sobe.jpg" />
 <style>
-    .card{
+    .card {
         position: relative;
-        top: 5em;
-        bottom 6em;
-        justify-content: center;
-        align-items: center;
-        padding: 1em;
-        z-index: 1;
+        top: 10em;
+        bottom: 10em;
+        padding: 3em;
         opacity: 0.95;
+        justify-content: center;
+        text-align: inherit;
+        z-index: 10;
     }
-    .card p{
-        text-align: center;
-        letter-spacing:2px;
-        text-transform: uppercase;
-    }
+
+        .card p {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
     .slika {
         position: absolute;
         top: 0;

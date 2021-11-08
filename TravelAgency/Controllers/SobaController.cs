@@ -95,10 +95,11 @@ namespace TravelAgency.Controllers
         }
 
         // GET: SobaController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Delete(int id)
+        {
+            Soba model = uow.Soba.FindById(id);
+            return View(model);
+        }
 
         // POST: SobaController/Delete/5
         [HttpPost]
@@ -107,12 +108,12 @@ namespace TravelAgency.Controllers
         {
             try
             {
-                var hotel = uow.Hotel.FindById(id);
-                if (hotel == null)
+                var soba = uow.Soba.FindById(id);
+                if (soba == null)
                 {
                     return NotFound();
                 }
-                uow.Hotel.Delete(hotel);
+                uow.Soba.Delete(soba);
                 uow.Commit();
 
                 return RedirectToAction(nameof(Index));

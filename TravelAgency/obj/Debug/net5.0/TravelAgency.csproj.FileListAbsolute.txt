@@ -150,10 +150,11 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Index.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Create.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Details.cshtml.g.cs
-C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Edit.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Shared\_Layout1.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Index.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Create.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Edit.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Delete.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Details.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Hotel\Details.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Soba\Delete.cshtml.g.cs

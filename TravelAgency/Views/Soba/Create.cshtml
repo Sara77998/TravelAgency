@@ -4,46 +4,87 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Soba</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="HotelID" class="control-label"></label>
-                <select asp-for="HotelID" asp-items="@ViewBag.hoteli" class="form-control"></select>
-                <span asp-validation-for="HotelID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrojSobe" class="control-label"></label>
-                <input asp-for="BrojSobe" class="form-control" />
-                <span asp-validation-for="BrojSobe" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TipSobe" class="control-label"></label>
-                <input asp-for="TipSobe" class="form-control" />
-                <span asp-validation-for="TipSobe" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Zauzeta" /> @Html.DisplayNameFor(model => model.Zauzeta)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="card">
+    <p>Kreiraj</p>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="HotelID" class="control-label"></label>
+                    <select asp-for="HotelID" asp-items="@ViewBag.hoteli" class="form-control"></select>
+                    <span asp-validation-for="HotelID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BrojSobe" class="control-label"></label>
+                    <input asp-for="BrojSobe" class="form-control" />
+                    <span asp-validation-for="BrojSobe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TipSobe" class="control-label"></label>
+                    <input asp-for="TipSobe" class="form-control" />
+                    <span asp-validation-for="TipSobe" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Zauzeta" /> @Html.DisplayNameFor(model => model.Zauzeta)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success btn-block" />
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-dark btn-block"><i class="fas fa-long-arrow-alt-left"></i></a>
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
+<img class="slika" src="~/images/Sobe.jpg" />
+<style>
 
-@section Scripts {
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+
+    .card {
+        position: relative;
+        z-index: 10;
+        opacity: 0.95;
+        margin: 2em 20em 0em 20em;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row2 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card p {
+        text-align: center;
+        letter-spacing: 5px;
+    }
+</style>
+
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@
