@@ -6,52 +6,57 @@
 
 
     
-    <div class="card">
-        <div class="row">
-            <div class="col">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Pasos" class="control-label"></label>
-                        <input asp-for="Pasos" class="form-control" />
-                        <span asp-validation-for="Pasos" class="text-danger"></span>
-                        @Html.ValidationMessage("GostID")
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Ime" class="control-label"></label>
-                        <input asp-for="Ime" class="form-control" />
-                        <span asp-validation-for="Ime" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Prezime" class="control-label"></label>
-                        <input asp-for="Prezime" class="form-control" />
-                        <span asp-validation-for="Prezime" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DatumRodjenja" class="control-label"></label>
-                        <input asp-for="DatumRodjenja" class="form-control" />
-                        <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Telefon" class="control-label"></label>
-                        <input asp-for="Telefon" class="form-control" />
-                        <span asp-validation-for="Telefon" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-success btn-block" />
-                    </div>
-                </form>
+<div class="card">
+    <p class="text-uppercase">Kreiraj</p>
+    <hr />
+    <div class="row">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pasos" class="control-label"></label>
+                <input asp-for="Pasos" class="form-control" />
+                <span asp-validation-for="Pasos" class="text-danger"></span>
+                @Html.ValidationMessage("GostID")
             </div>
-        </div>
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label asp-for="Ime" class="control-label"></label>
+                    <input asp-for="Ime" class="form-control" />
+                    <span asp-validation-for="Ime" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-left: 1em;">
+                    <label asp-for="Prezime" class="control-label"></label>
+                    <input asp-for="Prezime" class="form-control" />
+                    <span asp-validation-for="Prezime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumRodjenja" class="control-label"></label>
+                <input asp-for="DatumRodjenja" class="form-control" />
+                <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
+            </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label asp-for="Telefon" class="control-label"></label>
+                    <input asp-for="Telefon" class="form-control" />
+                    <span asp-validation-for="Telefon" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-left: 1em;">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success btn-block" />
+            </div>
+            <div>
+                <a asp-action="Index" class="btn btn-outline-dark btn-block"><i class="fas fa-long-arrow-alt-left"></i></a>
+            </div>
+        </form>
     </div>
+</div>
 
 
     <div class="video">
@@ -81,6 +86,20 @@
            margin:2em 20em 0em 20em;
            justify-content: center;
            padding: 2em;
+        }
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row2 {
+            display: flex;
+            flex-direction: row;
+        }
+        .card p {
+            text-align: center;
+            letter-spacing: 5px;
         }
         
     </style>

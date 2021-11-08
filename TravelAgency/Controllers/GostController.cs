@@ -60,7 +60,7 @@ namespace TravelAgency.Controllers
                 {
                     return View("Create");
                 }
-                bool exists = uow.Gost.Search(g => g.GostID == gost.GostID).Any();
+                bool exists = uow.Gost.Search(g => g.Pasos == gost.Pasos).Any();
                 if (exists)
                 {
                     ModelState.AddModelError("GostID", "Ovaj gost vec postoji u sistemu!");
@@ -114,16 +114,25 @@ namespace TravelAgency.Controllers
         // GET: GostController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Gost model = uow.Gost.FindById(id);
+            return View(model);
         }
 
         // POST: GostController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        //zasto se ovde prosledjuje ceo objekat kad je dovoljno sto imamo id
+        public ActionResult Delete(int id, [FromForm]Gost model)
         {
             try
             {
+                Gost gost = uow.Gost.FindById(id);
+                if (gost == null)
+                {
+                    return NotFound();
+                }
+                uow.Gost.Delete(gost);
+                uow.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch

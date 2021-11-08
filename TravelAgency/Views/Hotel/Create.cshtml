@@ -4,13 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-
-<h1>Create</h1>
-
-<h4>Hotel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="card">
+    <p class="text-uppercase">Kreiraj</p>
+    <hr />
+    <div class="row">
+        
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -26,16 +24,21 @@
                 <span asp-validation-for="Naziv"></span>
                 @Html.ValidationMessage("HotelNaziv")
             </div>
-            <div class="form-group">
-                <label asp-for="Adresa" class="control-label"></label>
-                <input asp-for="Adresa" class="form-control" />
-                <span asp-validation-for="Adresa" class="text-danger"></span>
+            <div class="row2">
+                    <div class="form-group" style="flex-grow: 8;">
+                        <label asp-for="Adresa" class="control-label"></label>
+                        <input asp-for="Adresa" class="form-control" />
+                        <span asp-validation-for="Adresa" class="text-danger"></span>
+                    </div>
+            
+                    <div class="form-group" style="margin-left: 1em; flex-grow: 1;">
+                        <label asp-for="BrojZvezdinca" class="control-label"></label>
+                        <input asp-for="BrojZvezdinca" class="form-control" />
+                        <span asp-validation-for="BrojZvezdinca" class="text-danger"></span>
+                    </div>              
             </div>
-            <div class="form-group">
-                <label asp-for="BrojZvezdinca" class="control-label"></label>
-                <input asp-for="BrojZvezdinca" class="form-control" />
-                <span asp-validation-for="BrojZvezdinca" class="text-danger"></span>
-            </div>
+         
+           
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
@@ -47,17 +50,56 @@
                 <span asp-validation-for="Telefon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success btn-block" />
+            </div>
+            <div>
+                <a asp-action="Index" class="btn btn-outline-dark btn-block"><i class="fas fa-long-arrow-alt-left"></i></a>
             </div>
         </form>
+      
     </div>
 </div>
+<img class="slika" src="~/images/Hoteli11.jpg" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<style>
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+    .card {
+        position: relative;
+        z-index: 10;
+        opacity: 0.8;
+        margin: 2em 20em 0em 20em;
+        justify-content: center;
+        padding: 2em;
+        opacity: 0.9;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .row2 {
+        display: flex;
+        flex-direction: row;
+    }
+    .row form{
+        width:85%;
+    }
+    .card p {
+        text-align: center;
+        letter-spacing: 5px;
+    }
+</style>
 
 
-@section Scripts {
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

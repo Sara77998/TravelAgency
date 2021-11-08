@@ -1,0 +1,90 @@
+﻿@model Domain.Gost
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="card">
+    <div>
+        <h1>@Model.Prezime, @Model.Ime</h1>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GostID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GostID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Pasos)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pasos)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DatumRodjenja)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DatumRodjenja)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Telefon)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Telefon)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.GostID" class="btn btn-warning btn-lg">
+            <i class="fas fa-pencil-alt"></i>
+        </a>
+        <hr />
+    </div>
+    <div>
+
+        <a class="btn btn-outline-primary btn-lg" asp-action="Index">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</div>
+<div class="video">
+    <div class="color-overlay"></div>
+    <video autoplay loop muted style="width: 100%; height: 100%;">
+        <source src="~/videos/Pexels Videos 2547258.mp4" type="video/mp4">
+    </video>
+</div>
+<style>
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        overflow: hidden;
+    }
+    .card {
+        position: relative;
+        top: 10em;
+        bottom: 10em;
+        padding: 3em;
+        margin: 0em 5em 0em 5em;
+        opacity: 0.8;
+        justify-content: center;
+        text-align: inherit;
+        z-index: 10;
+    }
+
+        .card h3 {
+            text-align: center;
+        }
+</style>
+

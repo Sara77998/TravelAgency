@@ -71,7 +71,6 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Domain.dll
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Data.pdb
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Domain.pdb
-C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Hotel\Details.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -156,3 +155,5 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Index.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Create.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Edit.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Delete.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Gost\Details.cshtml.g.cs

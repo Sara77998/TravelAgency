@@ -22,7 +22,7 @@ namespace Data.Implementation
 
         public void Delete(Gost s)
         {
-            throw new NotImplementedException();
+            context.Remove(s);
         }
 
         public Gost FindById(int id)
