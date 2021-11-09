@@ -161,3 +161,5 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Rezervacija\Create.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Shared\StavkeRezervacijePartial.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Rezervacija\Index.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Agent\Login.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Agent\Register.cshtml.g.cs
