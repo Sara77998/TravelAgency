@@ -14,7 +14,7 @@ namespace Domain
         public int HotelID { get; set; }
         public Hotel Hotel { get; set; }
         [DisplayName("Broj sobe")]
-        public int BrojSobe { get; set; }
+        public string BrojSobe { get; set; }
         [DisplayName("Tip sobe")]
         public string TipSobe { get; set; }
         public bool Zauzeta { get; set; }

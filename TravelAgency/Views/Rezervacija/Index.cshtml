@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Domain.Rezervacija>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RezervacijaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SobaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumOd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumDo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RezervacijaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SobaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumOd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumDo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+﻿@model TravelAgency.Models.StavkaRezervacijeVM
+
+
+<tr>
+    <td>@(Model.Rb + 1)</td>
+    <td>@Model.GostID
+    <input  hidden value="@Model.GostID" name="Rezervacija.StavkeRezervacije[@Model.Rb].GostID"/>
+    </td>
+    <td>@Model.Pasos</td>
+    <td>@Model.Ime</td>
+    <td>@Model.Prezime</td>
+</tr>

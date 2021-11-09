@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace Data.Implementation
 
         public Soba FindById(int id)
         {
-            return context.Sobe.First(s => s.SobaID == id);
+            //mora da se includuje i hotel
+            return context.Sobe.Include(s => s.Hotel).Single(s => s.SobaID == id);
         }
 
         public List<Soba> GetAll()

@@ -48,9 +48,8 @@
                         Rezervacije
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Dodaj rezervaciju</a>
-                        <a class="dropdown-item" href="#">Lista rezervacija</a>
-                        <a class="dropdown-item" href="#">Lista rezervacija</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Create">Dodaj rezervaciju</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Index">Lista rezervacija</a>                       
                     </div>
                 </div>
             </ul>
@@ -127,6 +126,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

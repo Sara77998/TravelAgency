@@ -45,6 +45,7 @@ namespace TravelAgency.Controllers
                     Text = h.Naziv
                 });
             }
+            //prosledjuje se lista hotela
             ViewBag.hoteli = hoteli;
             return View("Create");
         }

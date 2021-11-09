@@ -32,7 +32,7 @@ namespace Data.Implementation
 
         public List<Agent> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Agenti.ToList();
         }
 
         public Agent GetByUsernameAndPassword(Agent agent)
