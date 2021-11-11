@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelAgency.Filter;
 
 namespace TravelAgency
 {
@@ -25,8 +26,15 @@ namespace TravelAgency
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWorkTravelAgency>();
+            services.AddScoped<LoggedInAgent>();
+            services.AddScoped<NotLoggedIn>();
             services.AddDbContext<TravelAgencyContext>();
         }
 
@@ -47,6 +55,8 @@ namespace TravelAgency
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

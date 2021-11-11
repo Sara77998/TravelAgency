@@ -21,41 +21,49 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        
+
         <!-- Gornji navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light " style="justify-content: space-around;">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light " style="justify-content: space-between;">
             
-            <a class="navbar-brand" href="#">
-                <i class="fa fa-suitcase" aria-hidden="true"></i>
-                Travel Agency
-            </a>
+                <div class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </div>
 
+                <a class="navbar-brand" href="#">
+                    <i class="fa fa-suitcase" aria-hidden="true"></i>
+                    Travel Agency
+                </a>
+            
+           
             <ul class="navbar-nav">
-                @if (ViewBag.IsLogedIn != null && ViewBag.IsLogedIn)
-                {
-                    <li class="nav-item" style="padding-right:1rem ; padding-left: 1rem;">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pocetna</a>
-                    </li>
-                                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Gost" asp-action="Index">Gosti</a>
-                                    </li>
-                                                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
-                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="Index">Hoteli</a>
-                                                    </li>
-                                                                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
-                                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Soba" asp-action="Index">Sobe</a>
-                                                                    </li>
-                                                                                    <div class="dropdown" style="padding-right: 1rem; padding-left: 1rem;">
-                                                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                            Rezervacije
-                                                                                        </button>
-                                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Create">Dodaj rezervaciju</a>
-                                                                                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Index">Lista rezervacija</a>
-                                                                                        </div>
-                                                                                    </div>
 
-                  }
+
+
+
+                @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
+                {
+        <li class="nav-item" style="padding-right:1rem ; padding-left: 1rem;">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pocetna</a>
+        </li>
+                        <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gost" asp-action="Index">Gosti</a>
+                        </li>
+                                        <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="Index">Hoteli</a>
+                                        </li>
+                                                        <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
+                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Soba" asp-action="Index">Sobe</a>
+                                                        </li>
+                                                                        <div class="dropdown" style="padding-right: 1rem; padding-left: 1rem;">
+                                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                Rezervacije
+                                                                            </button>
+                                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                                <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Create">Dodaj rezervaciju</a>
+                                                                                <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Index">Lista rezervacija</a>
+                                                                            </div>
+                                                                        </div>
+}
 
             </ul>
 
@@ -66,56 +74,57 @@
         <!-- Levi navbar-->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <div class="sidebar">
-                <!-- Korisnik -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
+                @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
+                {
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+            <a href="#" class="d-block">Agent</a>
+        </div>
+    </div>}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                   
+
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
+
                         <li class="nav-item has-treeview menu-open">
 
                             <ul class="nav nav-treeview">
-                                @if (ViewBag.IsLogedIn != null && ViewBag.IsLogedIn)
+                                @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
                                 {
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
+                            <p>Agencija - Tim</p>
+                        </a>
+                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="fa fa-sticky-note" aria-hidden="true"></i> &nbsp;&nbsp;
+                                            <p>Beleske</p>
+                                        </a>
+                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                            <p>Kalendar</p>
+                                                        </a>
+                                                    </li>
+                                                    <hr />
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link text-white" asp-controller="Agent" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+                                                                    </li>
+ }
+                                                                else
+                                                                {
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
-                                    <p>Agencija - Tim</p>
-                                </a>
+                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Index"> <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+
                             </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-sticky-note" aria-hidden="true"></i> &nbsp;&nbsp;
-                                                    <p>Beleske</p>
-                                                </a>
-                                            </li>
-                                                            <li class="nav-item">
-                                                                <a href="#" class="nav-link">
-                                                                    <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
-                                                                    <p>Kalendar</p>
-                                                                </a>
-                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link text-white" asp-controller="User" asp-action="Logout">Logout</a>
-                                                                            </li>
-
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Index">Login</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Register">Register</a>
-                                                                            </li>
-
-                                                                        }
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Register"><i class="fas fa-registered"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</a>
+                            </li>
+}
 
                             </ul>
                         </li>
@@ -125,7 +134,7 @@
         </aside>
 
 
-        <div class="content-wrapper">         
+        <div class="content-wrapper">
             <div class="content" style="padding:0; margin: 0;">
                 <div class="container-fluid" style="padding:0; margin: 0;">
                     @RenderBody()
@@ -134,21 +143,30 @@
             </div>
         </div>
 
-
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
 
         <footer class="main-footer" style="z-index:10;">
             <div class="container">
                 &copy; @DateTime.Now.Year - TravelAgency - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>
+
     </div>
 
     @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>*@
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>*@
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/adminlte.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

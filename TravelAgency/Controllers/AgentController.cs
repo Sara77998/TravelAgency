@@ -1,13 +1,18 @@
 ﻿using Data.UnitOfWork;
+using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using TravelAgency.Filter;
+using TravelAgency.Models;
 
 namespace TravelAgency.Controllers
 {
+    [LoggedInAgent]
     public class AgentController : Controller
     {
         private readonly IUnitOfWork uow;
@@ -17,11 +22,36 @@ namespace TravelAgency.Controllers
             this.uow = uow;
         }
         // GET: UserController
+        [NotLoggedIn]
         public ActionResult Index()
         {
             return View("Login");
         }
 
+        [HttpPost]
+        public ActionResult Login(LoginVM model)
+        {
+            try
+            {
+                Agent agent = uow.Agent.GetByUsernameAndPassword(new Agent
+                {
+                    Username = model.Username,
+                    Password = model.Password
+                });
+                HttpContext.Session.SetInt32("agentid", agent.AgentID);
+                HttpContext.Session.SetString("username", agent.Username);
+
+                HttpContext.Session.Set("agent", JsonSerializer.SerializeToUtf8Bytes(agent));
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Losi podaci!");
+                return View();
+            }
+           
+        }
         //[HttpPost]
         //public ActionResult Login(LoginViewModel model)
         //{
@@ -48,6 +78,7 @@ namespace TravelAgency.Controllers
             return View();
         }
 
+        [NotLoggedIn]
         // GET: UserController/Create
         [ActionName("Register")]
         public ActionResult Create()
@@ -59,22 +90,22 @@ namespace TravelAgency.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Register")]
-        //public ActionResult Create(RegisterViewModel model)
-        //{
-        //    if (unit.Users.Search(u => u.Username == model.Username).Any())
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Username is taken!");
-        //        return View();
-        //    }
-        //    unit.Users.Add(new Domain.User { FirstName = model.FirstName, LastName = model.Lastname, Username = model.Username, Password = model.Password });
-        //    unit.Commit();
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult Create(Agent model)
+        {
+            if (uow.Agent.Search(u => u.Username == model.Username).Any())
+            {
+                ModelState.AddModelError(string.Empty, "Username is taken!");
+                return View();
+            }
+            uow.Agent.Add(new Domain.Agent { TuristickaAgencijaID = 1, Ime = model.Ime, Prezime = model.Prezime, Email = model.Email, Username = model.Username, Password = model.Password });
+            uow.Commit();
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Agent");
         }
 
     }

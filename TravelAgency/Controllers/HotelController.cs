@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelAgency.Filter;
 
 namespace TravelAgency.Controllers
 {
+    [LoggedInAgent]
     public class HotelController : Controller
     {
         private readonly IUnitOfWork uow;

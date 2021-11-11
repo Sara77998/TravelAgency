@@ -17,7 +17,7 @@ namespace Data.Implementation
         }
         public void Add(Agent s)
         {
-            throw new NotImplementedException();
+            context.Agenti.Add(s);
         }
 
         public void Delete(Agent s)
@@ -42,7 +42,7 @@ namespace Data.Implementation
 
         public List<Agent> Search(Expression<Func<Agent, bool>> pred)
         {
-            throw new NotImplementedException();
+            return context.Agenti.Where(pred).ToList();
         }
     }
 }

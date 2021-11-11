@@ -1,30 +1,32 @@
-﻿@model Domain.Agent
+﻿@model TravelAgency.Models.LoginVM
 
 
 @{
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+
 <div class="hold-transition login-page">
     <div class="login-box">
-        <h4>Hello!</h4>
-        <!-- /.login-logo -->
-        <div class="card">
+        <h4>Dobrodosli!</h4>
+        
+        <div class="card" style="z-index:10;">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Uloguj se za pocetak rada</p>
 
-                <form action="../../index3.html" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Username" asp-for="Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" asp-for="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -36,26 +38,39 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
-                                    Remember Me
+                                    Zapamti me
                                 </label>
                             </div>
                         </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+
+                        <div>
+
+                            <button type="submit" value="Login" class="btn btn-primary btn-block" asp-action="Login">Uloguj se</button>
                         </div>
-                        <!-- /.col -->
+
                     </div>
                 </form>
 
 
             </div>
-            <!-- /.login-card-body -->
+            
         </div>
     </div>
 
 </div>
-
+<img src="~/images/Login.jpg" class="slika" />
+<style>
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+</style>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
