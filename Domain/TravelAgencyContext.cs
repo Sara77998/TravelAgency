@@ -21,6 +21,11 @@ namespace Domain
         {
             optionsBuilder.UseSqlServer(@"Server = (localdb)\mssqllocaldb;Database = TuristickaAgencija;");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TuristickaAgencija>().HasData(new TuristickaAgencija {TuristickaAgencijaID=1, Naziv = "Sabra", Telefon = "068172121"});
+            
+        }
 
 
     }

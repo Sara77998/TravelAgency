@@ -34,7 +34,7 @@ namespace Data.Implementation
 
         public List<Soba> GetAll()
         {
-            return context.Sobe.ToList();
+            return context.Sobe.Include(s => s.Hotel).ToList();
         }
 
         public List<Soba> Search(Expression<Func<Soba, bool>> pred)
