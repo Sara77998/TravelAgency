@@ -13,9 +13,9 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="GostID" class="control-label"></label>
-                <input asp-for="GostID" class="form-control" />
-                <span asp-validation-for="GostID" class="text-danger"></span>
+                <label asp-for="Pasos" class="control-label"></label>
+                <input asp-for="Pasos" class="form-control" />
+                <span asp-validation-for="Pasos" class="text-danger"></span>
             </div>
             <div class="row2">
                 <div class="form-group">
@@ -48,6 +48,7 @@
                 </div>
             </div>
             <div class="form-group">
+                <input type="hidden" asp-for="GostID" />
                 <input type="submit" value="Save" class="btn btn-success btn-block" />
             </div>
             <div>

@@ -102,6 +102,7 @@ namespace TravelAgency.Controllers
                 }
                 
                 uow.Gost.Update(gost);
+                uow.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch

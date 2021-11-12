@@ -25,20 +25,22 @@
                     <select asp-for="Rezervacija.SobaID" asp-items="@ViewBag.sobe" class="form-control"></select>
                     <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
                 </div>
-
-                <div class="form-group">
-                    <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
-                    <input asp-for="Rezervacija.DatumOd" class="form-control" />
-                    <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
+                <div class="row2">
+                    <div class="form-group">
+                        <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
+                        <input asp-for="Rezervacija.DatumOd" class="form-control datepicker" />
+                        <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="margin-left: 3em;">
+                        <label asp-for="Rezervacija.DatumDo" class="control-label"></label>
+                        <input asp-for="Rezervacija.DatumDo" class="form-control datepicker" />
+                        <span asp-validation-for="Rezervacija.DatumDo" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
-                    <input asp-for="Rezervacija.DatumOd" class="form-control" />
-                    <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
-                </div>
+                
                 <div class="form-group">
                     <label class="control-label"> Gosti: </label>
-                    @Html.DropDownList("StavkeRezervacije", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
+                    @Html.DropDownList("Gosti", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
                 </div>
                 <button class="btn btn-dark btn-block" id="dodajgosta">Dodaj</button>
                 @*lista svih gostiju u toj sobi*@
@@ -98,6 +100,12 @@
                 }
             });
         });
+
+        //$(function () {
+        //    $(".datepicker").datepicker({
+        //        dateFomat: "yy-mm-dd"
+        //    });
+        //});
     </script>
 }
 
@@ -107,6 +115,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        height:100%;
         object-fit: cover;
         opacity: 0.5;
         overflow: hidden;

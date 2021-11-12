@@ -66,15 +66,7 @@ namespace TravelAgency.Controllers
 
 
 
-        //public ActionResult Delete(int id)
-        //{
-        //    return Index();
-            
-        //}
-
-        // POST: HotelController/Delete/5
-        
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             var hotel = uow.Hotel.FindById(id);
             if (hotel == null)
@@ -85,6 +77,22 @@ namespace TravelAgency.Controllers
             uow.Commit();
 
             return RedirectToAction(nameof(Index));
+
         }
+
+        // POST: HotelController/Delete/5
+
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    var hotel = uow.Hotel.FindById(id);
+        //    if (hotel == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    uow.Hotel.Delete(hotel);
+        //    uow.Commit();
+
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }
