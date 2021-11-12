@@ -4,84 +4,85 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="card">
+    <p class="text-uppercase">Kreiraj rezervaciju</p>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<h4>Rezervacija</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*izabere se vec pstojeci agent*@
+                <div class="form-group">
+                    <label asp-for="Rezervacija.AgentID" class="control-label"></label>
+                    <select asp-for="Rezervacija.AgentID" asp-items="@ViewBag.agenti" class="form-control"></select>
+                    <span asp-validation-for="Rezervacija.AgentID" class="text-danger"></span>
+                </div>
 
-            @*izabere se vec pstojeci agent*@
-            <div class="form-group">
-                <label asp-for="Rezervacija.AgentID" class="control-label"></label>
-                <select asp-for="Rezervacija.AgentID" asp-items="@ViewBag.agenti" class="form-control"></select>
-                <span asp-validation-for="Rezervacija.AgentID" class="text-danger"></span>
-            </div>
+                @*izabere se vec pstojeca soba*@
+                <div class="form-group">
+                    <label asp-for="Rezervacija.SobaID" class="control-label"></label>
+                    <select asp-for="Rezervacija.SobaID" asp-items="@ViewBag.sobe" class="form-control"></select>
+                    <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
+                </div>
 
-            @*izabere se vec pstojeca soba*@
-        <div class="form-group">
-            <label asp-for="Rezervacija.SobaID" class="control-label"></label>
-            <select asp-for="Rezervacija.SobaID" asp-items="@ViewBag.sobe" class="form-control"></select>
-            <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
+                    <input asp-for="Rezervacija.DatumOd" class="form-control" />
+                    <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
+                    <input asp-for="Rezervacija.DatumOd" class="form-control" />
+                    <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> Gosti: </label>
+                    @Html.DropDownList("StavkeRezervacije", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
+                </div>
+                <button class="btn btn-dark btn-block" id="dodajgosta">Dodaj</button>
+                @*lista svih gostiju u toj sobi*@
+                <table class="table" id="listagostiju">
+                    <thead>
+                        <tr>
+                            <th>
+                                RB
+                            </th>
+                            <th>
+                                GostID
+                            </th>
+                            <th>
+                                Pasos
+                            </th>
+                            <th>
+                                Ime
+                            </th>
+                            <th>
+                                Prezime
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success btn-block" />
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-dark btn-block"><i class="fas fa-long-arrow-alt-left"></i></a>
+                </div>
+            </form>
         </div>
-
-            <div class="form-group">
-                <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
-                <input asp-for="Rezervacija.DatumOd" class="form-control" />
-                <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
-                <input asp-for="Rezervacija.DatumOd" class="form-control" />
-                <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label"> Gosti: </label>
-                @Html.DropDownList("StavkeRezervacije", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
-            </div>
-            <button class="btn btn-dark btn-block" id="dodajgosta">Dodaj</button>
-            @*lista svih gostiju u toj sobi*@
-            <table class="table" id="listagostiju">
-                <thead>
-                    <tr>
-                        <th>
-                            RB
-                        </th>
-                        <th>
-                            GostID
-                        </th>
-                        <th>
-                            Pasos
-                        </th>
-                        <th>
-                            Ime
-                        </th>
-                        <th>
-                            Prezime
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
 </div>
-
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
+<img src="~/images/Login11.jpg" class="slika" />
 
 @*@section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }*@
 @section Scripts{
     <script>
+        
         $('#dodajgosta').click(function (e) {
             e.preventDefault();
             /*alert('btn click');*/
@@ -100,3 +101,49 @@
     </script>
 }
 
+<style>
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        overflow: hidden;
+    }
+
+    .card {
+        position: relative;
+        z-index: 10;
+        opacity: 0.9;
+        margin: 2em 20em 0em 20em;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row2 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card p {
+        text-align: center;
+        letter-spacing: 5px;
+    }
+</style>

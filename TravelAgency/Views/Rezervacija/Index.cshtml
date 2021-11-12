@@ -1,53 +1,91 @@
 ﻿@model IEnumerable<Domain.Rezervacija>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RezervacijaID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgentID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SobaID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumOd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumDo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RezervacijaID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgentID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SobaID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumOd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumDo)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="naslov">
+    <h1>Hoteli</h1>
+    <a class="btn btn-outline-success btn-lg" asp-area="" asp-controller="Hotel" asp-action="Create"><i class="fas fa-plus"></i></a>
+</div>
+<br />
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RezervacijaID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AgentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SobaID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumOd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumDo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RezervacijaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SobaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumOd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumDo)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<img class="slika" src="~/images/Login11.jpg" />
+
+
+<style>
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+
+    .naslov {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1em;
+        margin: 0em 3em 0em 3em;
+    }
+
+        .naslov h1, a {
+            z-index: 10;
+        }
+
+    .card {
+        position: relative;
+        top: 0em;
+        bottom: 5em;
+        padding: 2em;
+        margin: 0em 3em 0em 3em;
+        z-index: 10;
+        opacity: 0.9;
+    }
+</style>

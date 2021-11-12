@@ -13,6 +13,7 @@
     <Folder Include="Validations\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\font\" />
+    <Folder Include="wwwroot\video\" />
     <Folder Include="wwwroot\videos\" />
   </ItemGroup>
 
