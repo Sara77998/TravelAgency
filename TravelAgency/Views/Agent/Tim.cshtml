@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Domain.Agent>
+
+
+
+<div class="card" style="z-index: 10; opacity: 0.8;">
+    <div class="card-header">
+        <p class="text-uppercase">Nas tim - svi agenti</p>
+       
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <ul class="users-list clearfix">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <img src="~/images/personlogo.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">@Html.DisplayFor(modelItem => item.AgentID), @Html.DisplayFor(modelItem => item.Ime) @Html.DisplayFor(modelItem => item.Prezime)</a>
+                    <span class="users-list-date">@Html.DisplayFor(modelItem => item.Email)</span>
+                    <span>Username: @Html.DisplayFor(modelItem => item.Username)</span>
+                </li>
+       }
+
+        </ul>
+        <!-- /.users-list -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+        <hr />
+    </div>
+    <!-- /.card-footer -->
+</div>
+<img src="~/images/greywall.jpg" class="slika" />
+<style>
+    .slika {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+    .card p {
+        text-align: center;
+        letter-spacing: 5px;
+    }
+</style>

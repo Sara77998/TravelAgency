@@ -107,6 +107,13 @@ namespace TravelAgency.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Agent");
         }
+        [ActionName("Tim")]
+        // GET: DodatnoController
+        public ActionResult Index1()
+        {
+            List<Agent> model = uow.Agent.GetAll();
+            return View(model);
+        }
 
     }
 }

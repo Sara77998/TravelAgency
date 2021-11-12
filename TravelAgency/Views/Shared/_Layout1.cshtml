@@ -12,9 +12,13 @@
 
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/font/all.min.css" />
-    <link rel="stylesheet" href="~/css/all.css" >
+    <link rel="stylesheet" href="~/css/all.css">
     <link rel="stylesheet" href="~/css/adminlte.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    @*datetime picker*@
+    <link rel="stylesheet" href="~/plugins/daterangepicker.css">
 </head>
 
 
@@ -93,19 +97,19 @@
                                 @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
                                 {
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" asp-controller="Agent" asp-action="Tim">
                             <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
                             <p>Agencija - Tim</p>
                         </a>
                     </li>
-                                    <li class="nav-item">
+                                    @*<li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="fa fa-sticky-note" aria-hidden="true"></i> &nbsp;&nbsp;
                                             <p>Beleske</p>
                                         </a>
-                                    </li>
+                                    </li>*@
                                                     <li class="nav-item">
-                                                        <a href="#" class="nav-link">
+                                                        <a class="nav-link" asp-controller="Dodatno" asp-action="Kalendar">
                                                             <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
                                                             <p>Kalendar</p>
                                                         </a>
