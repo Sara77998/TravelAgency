@@ -20,18 +20,19 @@ namespace TravelAgency.Controllers
             this.uow = uow;
         }
 
-
-
-
-
         // GET: GostController
-        public ActionResult Index()
+        
+        public ActionResult Index(string searching)
         {
-            List<Gost> model = uow.Gost.GetAll().ToList();
-            return View(model);
+            var gosti = uow.Gost.GetAll();
+          
+                if (!String.IsNullOrEmpty(searching))
+                {
+                gosti = gosti.Where(g => g.Ime.Contains(searching) || g.Prezime.Contains(searching) || g.Pasos.Contains(searching)).ToList();
+                    
+                }                           
+            return View(gosti.ToList());
         }
-
-
 
 
         // GET: GostController/Details/5

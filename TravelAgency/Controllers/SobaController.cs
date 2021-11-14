@@ -22,10 +22,22 @@ namespace TravelAgency.Controllers
         }
 
         // GET: SobaController
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    List<Soba> model = uow.Soba.GetAll();
+        //    return View(model);
+        //}
+
+        public ActionResult Index(string searching)
         {
-            List<Soba> model = uow.Soba.GetAll();
-            return View(model);
+            var sobe = uow.Soba.GetAll();
+
+            if (!String.IsNullOrEmpty(searching))
+            {
+                sobe = sobe.Where(s => s.BrojSobe.Contains(searching) || s.TipSobe.Contains(searching) || s.Hotel.Naziv.Contains(searching)).ToList();
+
+            }
+            return View(sobe.ToList());
         }
 
         // GET: SobaController/Details/5
