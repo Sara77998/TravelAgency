@@ -14,7 +14,10 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Registruj se</p>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <form  method="post">
+            <div>
+                @Html.ValidationMessage("Error")
+            </div>
+                <form method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="First name" asp-for="Ime">
                         <div class="input-group-append">
@@ -55,14 +58,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    @*<div class="input-group mb-3">
                         <input type="password" class="form-control" placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
