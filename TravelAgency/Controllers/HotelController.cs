@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TravelAgency.Filter;
+using TravelAgency.Models;
 
 namespace TravelAgency.Controllers
 {
@@ -29,7 +30,13 @@ namespace TravelAgency.Controllers
         // GET: HotelController/Details/5
         public ActionResult Details([FromRoute] int id)
         {
-            Hotel model = uow.Hotel.FindById(id);
+            Hotel hotel = uow.Hotel.FindById(id);
+            List<Soba> sobe = uow.Soba.Search(s => s.HotelID == id);
+            HotelVM model = new HotelVM
+            {
+                Hotel = hotel,
+                Sobe = sobe
+            };
             return View(model);
         }
 

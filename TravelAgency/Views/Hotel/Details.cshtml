@@ -1,4 +1,5 @@
-﻿@model Domain.Hotel
+﻿@model TravelAgency.Models.HotelVM
+
 
 @{
     ViewData["Title"] = "Details";
@@ -6,53 +7,102 @@
 
 
 <div class="card">
-    <p>Details</p>
+    <p>Detalji</p>
     <hr />
     <div>
-        <dl class="row">
+        <div class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HotelID)
+                @Html.DisplayNameFor(model => model.Hotel.Naziv):
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HotelID)
+                @Html.DisplayFor(model => model.Hotel.Naziv)
             </dd>
+        </div>
+        <div class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Zemlja)
+                @Html.DisplayNameFor(model => model.Hotel.Zemlja):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Zemlja)
-            </dd>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.Zemlja)
+            </dl>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Naziv)
+                @Html.DisplayNameFor(model => model.Hotel.Grad):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Naziv)
-            </dd>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.Grad)
+            </dl>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Adresa)
+                @Html.DisplayNameFor(model => model.Hotel.Adresa):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Adresa)
-            </dd>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.Adresa)
+            </dl>
+        </div>
+        <div class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BrojZvezdinca)
+                @Html.DisplayNameFor(model => model.Hotel.Email):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BrojZvezdinca)
-            </dd>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.Email)
+            </dl>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Hotel.Telefon):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.Telefon)
+            </dl>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Telefon)
+                @Html.DisplayNameFor(model => model.Hotel.BrojZvezdinca):
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Telefon)
-            </dd>
-        </dl>
+            <dl class="col-sm-2">
+                @Html.DisplayFor(model => model.Hotel.BrojZvezdinca)
+            </dl>
+        </div>
+        <hr />
+
+        <table class="table table-dark" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        Broj sobe
+                    </th>
+                    <th>
+                        Tip
+                    </th>
+                    <th>
+                        Zauzeta
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody >
+                @foreach (var item in Model.Sobe)
+                {
+                    <tr>
+                        <td class="table-dark">
+                            @Html.DisplayFor(modelItem => item.BrojSobe)
+                        </td>
+                        <td class="table-dark">
+                            @Html.DisplayFor(modelItem => item.TipSobe)
+                        </td>
+                        <td class="table-dark">
+                            @Html.DisplayFor(modelItem => item.Zauzeta)
+                        </td>
+
+                        <td class="table-dark">
+                            <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.HotelID">
+                                Napravi rezervaciju
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <hr />
         <div>
             <a class="btn btn-outline-dark btn-block" asp-action="Index">
                 <i class="fas fa-arrow-left"></i>
@@ -61,6 +111,16 @@
     </div>
 </div>
 <img class="slika" src="~/images/Hoteli11.jpg" />
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+
+
 <style>
     .slika {
         position: absolute;
@@ -76,16 +136,16 @@
         position: relative;
         z-index: 10;
         opacity: 0.8;
-        margin: 2em 20em 0em 20em;
+        margin: 2em 5em 0em 5em;
         justify-content: center;
         padding: 2em;
         opacity: 0.9;
     }
 
 
-    .card p {
-        text-align: center;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-    }
+        .card p {
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
 </style>

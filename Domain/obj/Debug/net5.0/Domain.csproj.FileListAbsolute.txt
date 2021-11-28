@@ -12,3 +12,4 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\Domain\obj\Debug\net5.0\D
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\Domain\bin\Debug\net5.0\Domain.runtimeconfig.json
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\Domain\bin\Debug\net5.0\Domain.runtimeconfig.dev.json
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\Domain\obj\Debug\net5.0\Domain.genruntimeconfig.cache
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache

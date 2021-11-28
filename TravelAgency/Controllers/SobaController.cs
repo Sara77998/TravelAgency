@@ -144,5 +144,12 @@ namespace TravelAgency.Controllers
                 return View("Index");
             }
         }
+
+       
+        public ActionResult ListaSoba(int id)
+        {
+            List<Soba> model = uow.Soba.GetAll();
+            return View(model);
+        }
     }
 }

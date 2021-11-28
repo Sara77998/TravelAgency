@@ -39,7 +39,7 @@ namespace Data.Implementation
 
         public List<Soba> Search(Expression<Func<Soba, bool>> pred)
         {
-            return context.Sobe.Where(pred).ToList();
+            return context.Sobe.Include(s => s.Hotel).Where(pred).ToList();
         }
     }
 }

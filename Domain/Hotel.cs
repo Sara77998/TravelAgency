@@ -14,6 +14,8 @@ namespace Domain
         [Required]
         public string Zemlja { get; set; }
         [Required]
+        public string Grad { get; set; }
+        [Required]
         public string Naziv { get; set; }
         [Required]
         public string Adresa { get; set; }
@@ -30,7 +32,7 @@ namespace Domain
         public string Telefon { get; set; }
         public override string ToString()
         {
-            return $"{Naziv} {Zemlja} {Adresa} {BrojZvezdinca} {Email} {Telefon}";
+            return $"{Naziv} {Zemlja} {Grad} {Adresa} {BrojZvezdinca} {Email} {Telefon}";
         }
     }
 }

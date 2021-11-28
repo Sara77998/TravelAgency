@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col">Naziv</th>
                 <th scope="col">Zemlja</th>
+                <th scope="col">Grad</th>
                 <th scope="col">Adresa</th>
                 <th scope="col">Email</th>
                 <th scope="col">Telefon</th>
@@ -24,31 +25,34 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naziv)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Zemlja)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Adresa)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefon)
-                    </td>
-                    <td>
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.HotelID">
-                            <i class="fas fa-info"></i>
-                        </a>
-                        <a asp-action="Delete" asp-route-id="@item.HotelID" class="btn btn-danger">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zemlja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefon)
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-action="Details" asp-controller="Hotel" asp-route-id="@item.HotelID">
+                        <i class="fas fa-info"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.HotelID" class="btn btn-danger">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
