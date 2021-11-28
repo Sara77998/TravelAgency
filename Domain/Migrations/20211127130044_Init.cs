@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Domain.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,12 @@ namespace Domain.Migrations
                 {
                     GostID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pasos = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
+                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DatumRodjenja = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefon = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,12 +31,12 @@ namespace Domain.Migrations
                 {
                     HotelID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Zemlja = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Adresa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Zemlja = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Adresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BrojZvezdinca = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefon = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,8 +64,8 @@ namespace Domain.Migrations
                     SobaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HotelID = table.Column<int>(type: "int", nullable: false),
-                    BrojSobe = table.Column<int>(type: "int", nullable: false),
-                    TipSobe = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrojSobe = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TipSobe = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Zauzeta = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -87,7 +88,9 @@ namespace Domain.Migrations
                     TuristickaAgencijaID = table.Column<int>(type: "int", nullable: false),
                     Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -132,15 +135,15 @@ namespace Domain.Migrations
                 name: "StavkeRezervacije",
                 columns: table => new
                 {
-                    StavkaRezervacijeID = table.Column<int>(type: "int", nullable: false)
+                    RezervacijaID = table.Column<int>(type: "int", nullable: false),
+                    RB = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RB = table.Column<int>(type: "int", nullable: false),
-                    GostID = table.Column<int>(type: "int", nullable: false),
-                    RezervacijaID = table.Column<int>(type: "int", nullable: true)
+                    StavkaRezervacijeID = table.Column<int>(type: "int", nullable: false),
+                    GostID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StavkeRezervacije", x => x.StavkaRezervacijeID);
+                    table.PrimaryKey("PK_StavkeRezervacije", x => new { x.RB, x.RezervacijaID });
                     table.ForeignKey(
                         name: "FK_StavkeRezervacije_Gosti_GostID",
                         column: x => x.GostID,
@@ -152,8 +155,13 @@ namespace Domain.Migrations
                         column: x => x.RezervacijaID,
                         principalTable: "Rezervacije",
                         principalColumn: "RezervacijaID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "TuristickeAgencije",
+                columns: new[] { "TuristickaAgencijaID", "Naziv", "Telefon" },
+                values: new object[] { 1, "Sabra", "068172121" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agenti_TuristickaAgencijaID",

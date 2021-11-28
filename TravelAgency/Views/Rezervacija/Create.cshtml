@@ -94,6 +94,7 @@
                 data: { GostID: $('#gost-select').val(), Rb: $('#listagostiju tbody tr').length },
                 success: function (data) {
                     $('#listagostiju tbody').append(data);
+                    $('#gost-select [value=' + $('#gost-select').val() + ']').remove();
                 },
                 error: function () {
                     alert('Error');

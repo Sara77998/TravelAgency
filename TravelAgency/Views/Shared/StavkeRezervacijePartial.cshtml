@@ -2,7 +2,10 @@
 
 
 <tr>
-    <td>@(Model.Rb + 1)</td>
+    <td>
+        @(Model.Rb + 1)
+        <!--input hidden value="@(Model.Rb+1)" name="Rezervacija.StavkeRezervacije[@Model.Rb].RB" /-->
+    </td>
     <td>@Model.GostID
     <input  hidden value="@Model.GostID" name="Rezervacija.StavkeRezervacije[@Model.Rb].GostID"/>
     </td>

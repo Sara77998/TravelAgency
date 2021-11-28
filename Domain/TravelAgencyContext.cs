@@ -24,7 +24,10 @@ namespace Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TuristickaAgencija>().HasData(new TuristickaAgencija {TuristickaAgencijaID=1, Naziv = "Sabra", Telefon = "068172121"});
-            
+
+            modelBuilder.Entity<Rezervacija>().OwnsMany(r => r.StavkeRezervacije, e => e.HasKey(s => new { s.RB, s.RezervacijaID }));
+            //modelBuilder.Entity<StavkaRezervacije>().HasKey(sr => new { sr.RezervacijaID, sr.GostID });
+
         }
 
 

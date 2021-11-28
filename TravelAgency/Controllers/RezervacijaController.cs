@@ -37,44 +37,7 @@ namespace TravelAgency.Controllers
         // GET: RezervacijaController/Create
         public ActionResult Create()
         {
-            List<SelectListItem> agenti = new List<SelectListItem>();
-            foreach (Agent a in uow.Agent.GetAll())
-            {
-                agenti.Add(new SelectListItem
-                {
-                    Value = a.AgentID.ToString(),
-                    Text = a.Ime + ' ' + a.Prezime
-                });
-            }
-            //prosledjuje se lista agenata
-            ViewBag.agenti = agenti;
-
-
-            List<SelectListItem> sobe = new List<SelectListItem>();
-            foreach (Soba s in uow.Soba.GetAll())
-            {
-                sobe.Add(new SelectListItem
-                {
-                    Value = s.SobaID.ToString(),
-                    Text = s.BrojSobe + ' ' + s.TipSobe
-                });
-            }
-            //prosledjuje se lista soba
-            ViewBag.sobe = sobe;
-
-
-            List<Gost> lista = uow.Gost.GetAll();
-            List<SelectListItem> selectLista = lista.Select(g => new SelectListItem
-            {
-                Text = g.Ime +" "+g.Prezime,
-                Value = g.GostID.ToString()
-            }).ToList();
-
-            RezervacijaVM model = new RezervacijaVM
-            {
-                Gosti = selectLista
-            };
-            return View(model);
+            return View(Forma());
         }
 
         // POST: RezervacijaController/Create
@@ -84,90 +47,21 @@ namespace TravelAgency.Controllers
         {
             try
             {
-                if (DateTime.Compare(model.Rezervacija.DatumOd, model.Rezervacija.DatumDo) > 0 || model.Rezervacija.DatumOd<DateTime.Now || model.Rezervacija.DatumDo<DateTime.Now)
+            
+                //provera datuma
+                if (!Validations.ValidacijaRezervacije.IspravanDatum(model))
                 {
-                    ModelState.AddModelError("", "Neispravno unesti datumi, proveriti!");
-                    List<SelectListItem> agenti = new List<SelectListItem>();
-                    foreach (Agent a in uow.Agent.GetAll())
-                    {
-                        agenti.Add(new SelectListItem
-                        {
-                            Value = a.AgentID.ToString(),
-                            Text = a.Ime + ' ' + a.Prezime
-                        });
-                    }
-                    //prosledjuje se lista agenata
-                    ViewBag.agenti = agenti;
+                    ModelState.AddModelError("", "Neispravno uneti datumi, proveriti!");
+                    return View(Forma());
+                }             
 
-
-                    List<SelectListItem> sobe = new List<SelectListItem>();
-                    foreach (Soba s in uow.Soba.GetAll())
-                    {
-                        sobe.Add(new SelectListItem
-                        {
-                            Value = s.SobaID.ToString(),
-                            Text = s.BrojSobe + ' ' + s.TipSobe
-                        });
-                    }
-                    //prosledjuje se lista soba
-                    ViewBag.sobe = sobe;
-
-
-                    List<Gost> lista = uow.Gost.GetAll();
-                    List<SelectListItem> selectLista = lista.Select(g => new SelectListItem
-                    {
-                        Text = g.Ime + " " + g.Prezime,
-                        Value = g.GostID.ToString()
-                    }).ToList();
-
-                    RezervacijaVM model1 = new RezervacijaVM
-                    {
-                        Gosti = selectLista
-                    };
-                    return View(model1);
-                }
-                if (model.Rezervacija.StavkeRezervacije == null)
+                //provera da li su uneti gosti
+                if (!Validations.ValidacijaRezervacije.IspravnaListaGostiju(model))
                 {
-                    ModelState.AddModelError("", "Rezervacija mora da sadrzi bar jednog gosta!");
-                    List<SelectListItem> agenti = new List<SelectListItem>();
-                    foreach (Agent a in uow.Agent.GetAll())
-                    {
-                        agenti.Add(new SelectListItem
-                        {
-                            Value = a.AgentID.ToString(),
-                            Text = a.Ime + ' ' + a.Prezime
-                        });
-                    }
-                    //prosledjuje se lista agenata
-                    ViewBag.agenti = agenti;
-
-
-                    List<SelectListItem> sobe = new List<SelectListItem>();
-                    foreach (Soba s in uow.Soba.GetAll())
-                    {
-                        sobe.Add(new SelectListItem
-                        {
-                            Value = s.SobaID.ToString(),
-                            Text = s.BrojSobe + ' ' + s.TipSobe
-                        });
-                    }
-                    //prosledjuje se lista soba
-                    ViewBag.sobe = sobe;
-
-
-                    List<Gost> lista = uow.Gost.GetAll();
-                    List<SelectListItem> selectLista = lista.Select(g => new SelectListItem
-                    {
-                        Text = g.Ime + " " + g.Prezime,
-                        Value = g.GostID.ToString()
-                    }).ToList();
-
-                    RezervacijaVM model1 = new RezervacijaVM
-                    {
-                        Gosti = selectLista
-                    };
-                    return View(model1);
+                    ModelState.AddModelError("", "Rezervacija mora da sadrzi bar jednog gosta!");                   
+                    return View(Forma());     
                 }
+
                 uow.Rezervacija.Add(model.Rezervacija);
                 uow.Commit();
                 return RedirectToAction("Index", "Rezervacija");
@@ -234,6 +128,48 @@ namespace TravelAgency.Controllers
                 Prezime = gost.Prezime
             };
             return PartialView("StavkeRezervacijePartial", model);
+        }
+
+        public RezervacijaVM Forma()
+        {
+            List<SelectListItem> agenti = new List<SelectListItem>();
+            foreach (Agent a in uow.Agent.GetAll())
+            {
+                agenti.Add(new SelectListItem
+                {
+                    Value = a.AgentID.ToString(),
+                    Text = a.Ime + ' ' + a.Prezime
+                });
+            }
+            //prosledjuje se lista agenata
+            ViewBag.agenti = agenti;
+
+
+            List<SelectListItem> sobe = new List<SelectListItem>();
+            foreach (Soba s in uow.Soba.GetAll())
+            {
+                sobe.Add(new SelectListItem
+                {
+                    Value = s.SobaID.ToString(),
+                    Text = s.BrojSobe + ' ' + s.TipSobe
+                });
+            }
+            //prosledjuje se lista soba
+            ViewBag.sobe = sobe;
+
+
+            List<Gost> lista = uow.Gost.GetAll();
+            List<SelectListItem> selectLista = lista.Select(g => new SelectListItem
+            {
+                Text = g.Ime + " " + g.Prezime,
+                Value = g.GostID.ToString()
+            }).ToList();
+
+            RezervacijaVM model1 = new RezervacijaVM
+            {
+                Gosti = selectLista
+            };
+            return model1;
         }
     }
 }

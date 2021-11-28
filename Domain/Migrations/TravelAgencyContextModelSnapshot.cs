@@ -158,12 +158,14 @@ namespace Domain.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("BrojSobe")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HotelID")
                         .HasColumnType("int");
 
                     b.Property<string>("TipSobe")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Zauzeta")
@@ -174,31 +176,6 @@ namespace Domain.Migrations
                     b.HasIndex("HotelID");
 
                     b.ToTable("Sobe");
-                });
-
-            modelBuilder.Entity("Domain.StavkaRezervacije", b =>
-                {
-                    b.Property<int>("StavkaRezervacijeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("GostID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RB")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RezervacijaID")
-                        .HasColumnType("int");
-
-                    b.HasKey("StavkaRezervacijeID");
-
-                    b.HasIndex("GostID");
-
-                    b.HasIndex("RezervacijaID");
-
-                    b.ToTable("StavkeRezervacije");
                 });
 
             modelBuilder.Entity("Domain.TuristickaAgencija", b =>
@@ -252,9 +229,49 @@ namespace Domain.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsMany("Domain.StavkaRezervacije", "StavkeRezervacije", b1 =>
+                        {
+                            b1.Property<int>("RB")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .UseIdentityColumn();
+
+                            b1.Property<int>("RezervacijaID")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("GostID")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("StavkaRezervacijeID")
+                                .HasColumnType("int");
+
+                            b1.HasKey("RB", "RezervacijaID");
+
+                            b1.HasIndex("GostID");
+
+                            b1.HasIndex("RezervacijaID");
+
+                            b1.ToTable("StavkeRezervacije");
+
+                            b1.HasOne("Domain.Gost", "Gost")
+                                .WithMany()
+                                .HasForeignKey("GostID")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+
+                            b1.WithOwner("Rezervacija")
+                                .HasForeignKey("RezervacijaID");
+
+                            b1.Navigation("Gost");
+
+                            b1.Navigation("Rezervacija");
+                        });
+
                     b.Navigation("Agent");
 
                     b.Navigation("Soba");
+
+                    b.Navigation("StavkeRezervacije");
                 });
 
             modelBuilder.Entity("Domain.Soba", b =>
@@ -266,26 +283,6 @@ namespace Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Hotel");
-                });
-
-            modelBuilder.Entity("Domain.StavkaRezervacije", b =>
-                {
-                    b.HasOne("Domain.Gost", "Gost")
-                        .WithMany()
-                        .HasForeignKey("GostID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Rezervacija", null)
-                        .WithMany("StavkeRezervacije")
-                        .HasForeignKey("RezervacijaID");
-
-                    b.Navigation("Gost");
-                });
-
-            modelBuilder.Entity("Domain.Rezervacija", b =>
-                {
-                    b.Navigation("StavkeRezervacije");
                 });
 #pragma warning restore 612, 618
         }

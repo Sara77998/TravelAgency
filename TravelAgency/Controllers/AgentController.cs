@@ -52,7 +52,7 @@ namespace TravelAgency.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Ovaj agent ne postoji!");
+                ModelState.AddModelError(string.Empty, "Neuspesan pokusaj prijavljivanja na sistem - agent ne postoji!");
                 return View();
             }
            
@@ -77,7 +77,7 @@ namespace TravelAgency.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Register")]
-        public ActionResult Create(Agent model)
+        public ActionResult Create(RegisterVM model)
         {
             if (model.Ime == null || model.Prezime == null || model.Email == null || model.Username == null || model.Password == null)
             {
@@ -100,7 +100,7 @@ namespace TravelAgency.Controllers
             return RedirectToAction("Index", "Agent");
         }
         [ActionName("Tim")]
-        // GET: DodatnoController
+        [LoggedInAgent]
         public ActionResult Index1()
         {
             List<Agent> model = uow.Agent.GetAll();

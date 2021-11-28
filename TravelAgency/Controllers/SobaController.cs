@@ -69,8 +69,13 @@ namespace TravelAgency.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([FromForm]Soba soba)
         {
+           
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View("Create");
+                }
                 Soba sobe = new Soba
                 {
                     HotelID = soba.HotelID,
