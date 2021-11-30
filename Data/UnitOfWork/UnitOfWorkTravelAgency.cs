@@ -20,6 +20,8 @@ namespace Data.UnitOfWork
             Rezervacija = new RepositoryRezervacija(context);
             Soba = new RepositorySoba(context);
             TuristickaAgencija = new RepositoryTuristickaAgencija(context);
+
+            Kalendar = new RepositoryKalendar(context);
         }
         public IRepositoryAgent Agent { get; set; }
         public IRepositoryGost Gost { get; set; }
@@ -27,6 +29,8 @@ namespace Data.UnitOfWork
         public IRepositoryRezervacija Rezervacija { get; set; }
         public IRepositorySoba Soba { get; set; }
         public IRepositoryTuristickaAgencija TuristickaAgencija { get; set; }
+
+        public IRepositoryKalendar Kalendar { get; set; }
 
         public void Commit()
         {

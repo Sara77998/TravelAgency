@@ -16,6 +16,7 @@ namespace Domain
         public DbSet<Soba> Sobe { get; set; }
         public DbSet<StavkaRezervacije> StavkeRezervacije { get; set; }
         public DbSet<Gost> Gosti { get; set; }
+        public DbSet<Kalendar> Kalendar { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

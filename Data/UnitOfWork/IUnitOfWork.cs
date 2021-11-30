@@ -14,6 +14,8 @@ namespace Data.UnitOfWork
         public IRepositoryRezervacija Rezervacija { get; set; }
         public IRepositorySoba Soba { get; set; }
         public IRepositoryTuristickaAgencija TuristickaAgencija { get; set; }
+
+        public IRepositoryKalendar Kalendar { get; set; }
         void Commit();
     }
 }
