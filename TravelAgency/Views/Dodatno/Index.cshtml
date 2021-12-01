@@ -96,11 +96,17 @@
                 eventClick: function (calEvent, jsEvent, view) {
                     $('#myModal #eventTitle').text(calEvent.title);
                     var $description = $('<div/>');
-                    $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
-                    if (calEvent.end != null) {
-                        $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                    if (calEvent.allDay != true) {
+                        $description.append($('<p/>').html('<b>Pocetak: </b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                        if (calEvent.end != null) {
+                            $description.append($('<p/>').html('<b>Kraj: </b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                        }
+                    }                  
+                    else{
+                        $description.append($('<p/>').html('<b>Pocetak: </b>' + calEvent.start.format("DD-MMM-YYYY")));
+                        $description.append($('<p/>').html('<b>Traje ceo dan</b>'));
                     }
-                    $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                    $description.append($('<p/>').html('<b>Detalji: </b>' + calEvent.description));
                     $('#myModal #pDetails').empty().html($description);
 
                     $('#myModal').modal();

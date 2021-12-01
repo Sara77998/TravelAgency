@@ -35,7 +35,6 @@ namespace TravelAgency.Controllers
 
         public ActionResult GetEvents()
         {
-
             List<Kalendar> events = uow.Kalendar.GetAll();
             return Json(events.Select(e => new {
                 id = e.KalendarID,
@@ -66,8 +65,16 @@ namespace TravelAgency.Controllers
                     ModelState.AddModelError("", "Sva polja su obavezna!");
                     return View("Create");
                 }
+                if(kalendar.Kraj != null)
+                {
+                    if (DateTime.Compare(kalendar.Pocetak, (DateTime)kalendar.Kraj) > 0)
+                    {
+                        ModelState.AddModelError("", "Neispravno uneti datumi, proveriti!");
+                        return View("Create");
+                    }
+                }
                 
-               
+
                 uow.Kalendar.Add(kalendar);
                 uow.Commit();
                 return RedirectToAction(nameof(Index));
