@@ -87,19 +87,6 @@ namespace TravelAgency.Controllers
 
         }
 
-        // POST: HotelController/Delete/5
-
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    var hotel = uow.Hotel.FindById(id);
-        //    if (hotel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    uow.Hotel.Delete(hotel);
-        //    uow.Commit();
-
-        //    return RedirectToAction(nameof(Index));
-        //}
+ 
     }
 }

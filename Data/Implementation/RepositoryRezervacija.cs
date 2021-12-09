@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Data.Implementation
 
         public List<Rezervacija> GetAll()
         {
-            return context.Rezervacije.ToList();
+            return context.Rezervacije.Include(r => r.Agent).Include(r => r.Soba).ToList();
         }
 
         public List<Rezervacija> Search(Expression<Func<Rezervacija, bool>> pred)

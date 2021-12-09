@@ -8,7 +8,7 @@
     <h1>Sobe</h1>
     <a class="btn btn-dark btn-lg" asp-area="" asp-controller="Soba" asp-action="Create" style="width:20%;"><i class="fas fa-plus"></i></a>
 </div>
-<div style="display: flex; flex-direction: row; justify-content: flex-end;">
+@*<div style="display: flex; flex-direction: row; justify-content: flex-end;">
     <div class="card" style=" padding: 2em; margin: 1em; margin-top: 0;">
         <h5>Filter</h5>
         <div class="row">
@@ -22,9 +22,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <div class="card">
-    <table class="table">
+    <table class="table" id="myTable">
         <thead>
             <tr>
 
@@ -65,7 +65,7 @@
                         <a class="btn btn-info" asp-action="Details" asp-route-id="@item.SobaID">
                             <i class="fas fa-info"></i>
                         </a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SobaID" >
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SobaID">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>
@@ -74,7 +74,17 @@
         </tbody>
     </table>
 </div>
-<img src ="~/images/Sobe.jpg"  class="slika" />
+<img src="~/images/Sobe.jpg" class="slika" />
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+
+
 <style>
     .slika {
         position: absolute;

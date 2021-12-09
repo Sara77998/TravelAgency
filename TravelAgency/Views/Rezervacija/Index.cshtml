@@ -25,7 +25,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.DatumDo)
                 </th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -36,10 +36,10 @@
                         @Html.DisplayFor(modelItem => item.RezervacijaID)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AgentID)
+                        @Html.DisplayFor(modelItem => item.Agent.Ime) @Html.DisplayFor(modelItem => item.Agent.Prezime)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SobaID)
+                        @Html.DisplayFor(modelItem => item.Soba.BrojSobe) @Html.DisplayFor(modelItem => item.Soba.TipSobe)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DatumOd)
@@ -54,10 +54,11 @@
     </table>
 </div>
 <img class="slika" src="~/images/Login11.jpg" />
+
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable();
+            $("#myTable").DataTable();
         });
     </script>
 }

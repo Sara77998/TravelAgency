@@ -1,0 +1,11 @@
+﻿@model RezervacijaVM
+
+<option value=""> --Select Soba-- </option>
+
+@if (ViewBag.SobaList != null)
+{
+    foreach (var item in ViewBag.SobaList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

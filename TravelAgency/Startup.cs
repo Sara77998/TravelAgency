@@ -3,6 +3,8 @@ using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,10 @@ namespace TravelAgency
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
             });
+
+            
+
+
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWorkTravelAgency>();
             services.AddScoped<LoggedInAgent>();

@@ -19,30 +19,59 @@
                     <span asp-validation-for="Rezervacija.AgentID" class="text-danger"></span>
                 </div>
 
-                @*izabere se vec pstojeca soba*@
-                <div class="form-group">
-                    <label asp-for="Rezervacija.SobaID" class="control-label"></label>
-                    <select asp-for="Rezervacija.SobaID" asp-items="@ViewBag.sobe" class="form-control"></select>
-                    <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
-                </div>
+                @*izabere se vec postojeca soba*@
                 <div class="row2">
-                    <div class="form-group">
+                    <div class="form-group" style="width: 45%;">
+                        @if (ViewBag.HotelList != null)
+                        {
+                            <label asp-for="Rezervacija.Soba.HotelID" class="control-label"></label>
+                            @Html.DropDownListFor(m => m.HotelID, ViewBag.HotelList as SelectList, "-- Izaberi Hotel --", new { @class = "form-control" })
+                            <span asp-validation-for="Rezervacija.Soba.HotelID" class="text-danger"></span>
+                        }
+                    </div>
+                    <div class="form-group" style="width: 45%;">
+                        <label asp-for="Rezervacija.SobaID" class="control-label"></label>
+                        @Html.DropDownListFor(m => m.SobaID, new SelectList(" "), "-- Izaberi Sobu --", new { @class = "form-control" })
+                        <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
+                    </div>
+
+
+                    @*<div class="form-group" style="width: 45%;">
+                            <label asp-for="Rezervacija.Soba.HotelID" class="control-label"></label>
+                            <select asp-for="Rezervacija.Soba.HotelID" asp-items="@ViewBag.hoteli" class="form-control" ></select>
+                            <span asp-validation-for="Rezervacija.Soba.HotelID" class="text-danger"></span>
+                        </div>*@
+                    @*<div class="form-group" style="width: 45%;">
+                            <label asp-for="Rezervacija.SobaID" class="control-label"></label>
+                            <select asp-for="Rezervacija.SobaID" asp-items="@ViewBag.sobe" class="form-control"></select>
+                            <span asp-validation-for="Rezervacija.SobaID" class="text-danger"></span>
+                        </div>*@
+                </div>
+
+                <div class="row2">
+                    <div class="form-group" style="width: 45%;">
                         <label asp-for="Rezervacija.DatumOd" class="control-label"></label>
                         <input asp-for="Rezervacija.DatumOd" class="form-control datepicker" />
                         <span asp-validation-for="Rezervacija.DatumOd" class="text-danger"></span>
                     </div>
-                    <div class="form-group" style="margin-left: 3em;">
+                    <div class="form-group" style="width: 45%;">
                         <label asp-for="Rezervacija.DatumDo" class="control-label"></label>
                         <input asp-for="Rezervacija.DatumDo" class="form-control datepicker" />
                         <span asp-validation-for="Rezervacija.DatumDo" class="text-danger"></span>
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <label class="control-label"> Gosti: </label>
-                    @Html.DropDownList("Gosti", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
+
+                <div class="row2">
+                    <div class="form-group" style="width: 49%;">
+                        <label class="control-label"> Gosti: </label>
+                        @Html.DropDownList("Gosti", Model.Gosti, new { @class = "form-control", @id = "gost-select" })
+                    </div>
+                    <div class="form-group" style="width: 49%;">
+                        <button class="btn btn-dark btn-block" id="dodajgosta" style="margin-top: 1em;">Dodaj</button>
+                    </div>
                 </div>
-                <button class="btn btn-dark btn-block" id="dodajgosta">Dodaj</button>
+                
+                
                 @*lista svih gostiju u toj sobi*@
                 <table class="table" id="listagostiju">
                     <thead>
@@ -51,7 +80,7 @@
                                 RB
                             </th>
                             <th>
-                                GostID
+                                
                             </th>
                             <th>
                                 Pasos
@@ -67,6 +96,13 @@
                     <tbody>
                     </tbody>
                 </table>
+
+
+                <hr />
+
+
+
+
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-success btn-block" />
                 </div>
@@ -76,15 +112,121 @@
             </form>
         </div>
     </div>
+    <hr />
+    <div class="row2">
+        <div class="form-group" style="width: 49%;">
+            <table id="myTable" class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>
+                            Pasos
+                        </th>
+                        <th>
+                            Ime
+                        </th>
+                        <th>
+                            Prezime
+                        </th>
+                        <th>
+                            Telefon
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.SviGosti)
+                    {
+                        <tr id="gost-select">
+                            <td class="table-dark">
+                                @Html.DisplayFor(modelItem => item.Pasos)
+                            </td>
+                            <td class="table-dark">
+                                @Html.DisplayFor(modelItem => item.Ime)
+                            </td>
+                            <td class="table-dark">
+                                @Html.DisplayFor(modelItem => item.Prezime)
+                            </td>
+
+
+                            <td class="table-dark">
+                                @Html.DisplayFor(modelItem => item.Telefon)
+                                @*<a asp-action="AddGost" asp-controller="Rezervacija" asp-route-id="@item.GostID" class="btn btn-dark" >
+            Dodaj gosta u rezervaciju
+        </a>*@
+                                @*<button class="btn btn-dark btn-block" id="dodajgosta">Dodaj</button>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <div class="form-group" style="width: 49%;">
+            <button type="button" value="Kreiraj novog gosta" id="showmenu1" class="btn btn-block btn-dark">Kreiraj novog gosta</button>
+            <div class="menu" style="display:none;">
+                <div class="row12">
+                    <form asp-action="CreateGost" asp-controller="Rezervacija">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Gost.Pasos" class="control-label"></label>
+                            <input asp-for="Gost.Pasos" class="form-control" />
+                            <span asp-validation-for="Gost.Pasos" class="text-danger"></span>
+                            @Html.ValidationMessage("GostID")
+                        </div>
+                        <div class="row22">
+                            <div class="form-group">
+                                <label asp-for="Gost.Ime" class="control-label"></label>
+                                <input asp-for="Gost.Ime" class="form-control" />
+                                <span asp-validation-for="Gost.Ime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" style="margin-left: 1em;">
+                                <label asp-for="Gost.Prezime" class="control-label"></label>
+                                <input asp-for="Gost.Prezime" class="form-control" />
+                                <span asp-validation-for="Gost.Prezime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Gost.DatumRodjenja" class="control-label"></label>
+                            <input asp-for="Gost.DatumRodjenja" class="form-control" />
+                            <span asp-validation-for="Gost.DatumRodjenja" class="text-danger"></span>
+                        </div>
+                        <div class="row22">
+                            <div class="form-group">
+                                <label asp-for="Gost.Telefon" class="control-label"></label>
+                                <input asp-for="Gost.Telefon" class="form-control" />
+                                <span asp-validation-for="Gost.Telefon" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" style="margin-left: 1em;">
+                                <label asp-for="Gost.Email" class="control-label"></label>
+                                <input asp-for="Gost.Email" class="form-control" />
+                                <span asp-validation-for="Gost.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-success btn-block" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <img src="~/images/Login11.jpg" class="slika" />
 
-@*@section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }*@
+
 @section Scripts{
+    
+    
     <script>
-        
+        $(document).ready(function () {
+            $('#showmenu1').click(function () {
+                $('.menu').slideToggle("slow");
+            });
+            $('#myTable').DataTable();
+            $('#gost-select').chosen();
+        });
+
+
         $('#dodajgosta').click(function (e) {
             e.preventDefault();
             /*alert('btn click');*/
@@ -102,11 +244,22 @@
             });
         });
 
-        //$(function () {
-        //    $(".datepicker").datepicker({
-        //        dateFomat: "yy-mm-dd"
-        //    });
-        //});
+
+        $(document).ready(function () {
+            $("#HotelID").change(function () {
+                var hotelid = $(this).val();
+                $.get("/Rezervacija/GetSobaList", { HotelID: hotelid }, function (data) {
+                    $("#SobaID").empty();
+                    $.each(data, function (index, row) {
+                        $("#SobaID").append("<option value='" + row.id + "'>" + row.brojsobe + ", " + row.tipsobe + "</option>")
+                    });
+                });
+            })
+        });
+
+
+   
+
     </script>
 }
 
@@ -116,7 +269,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height:100%;
+        height: 100%;
         object-fit: cover;
         opacity: 0.5;
         overflow: hidden;
@@ -136,7 +289,7 @@
         position: relative;
         z-index: 10;
         opacity: 0.9;
-        margin: 2em 20em 0em 20em;
+        margin: 3em;
         justify-content: center;
         padding: 2em;
     }
@@ -148,6 +301,19 @@
     }
 
     .row2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        row-gap: 1em;
+    }
+
+    .row12 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row22 {
         display: flex;
         flex-direction: row;
     }

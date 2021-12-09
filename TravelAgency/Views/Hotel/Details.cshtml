@@ -72,9 +72,6 @@
                     <th>
                         Zauzeta
                     </th>
-                    <th>
-
-                    </th>
                 </tr>
             </thead>
             <tbody >
@@ -89,14 +86,7 @@
                         </td>
                         <td class="table-dark">
                             @Html.DisplayFor(modelItem => item.Zauzeta)
-                        </td>
-
-                        <td class="table-dark">
-                            <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.HotelID">
-                                Napravi rezervaciju
-                            </a>
-
-                        </td>
+                        </td>                       
                     </tr>
                 }
             </tbody>

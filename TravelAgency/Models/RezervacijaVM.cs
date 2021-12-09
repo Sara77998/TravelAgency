@@ -11,5 +11,9 @@ namespace TravelAgency.Models
     {
         public Rezervacija Rezervacija { get; set; }
         public List<SelectListItem> Gosti { get; set; }
+        public List<Gost> SviGosti { get; set; }
+        public Gost Gost { get; set; }
+        public int HotelID { get; set; }
+        public int SobaID { get; set; }
     }
 }

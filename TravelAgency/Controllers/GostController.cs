@@ -79,8 +79,7 @@ namespace TravelAgency.Controllers
             }
         }
 
-
-
+      
 
 
         // GET: GostController/Edit/5

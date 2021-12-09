@@ -168,3 +168,17 @@ C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\ne
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Shared\TabelaSobePartial.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Dodatno\Index.cshtml.g.cs
 C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Dodatno\Create.cshtml.g.cs
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Sara\source\repos\ASP.Net\TravelAgencyProject\TravelAgency\obj\Debug\net5.0\Razor\Views\Shared\PrikaziSobe1.cshtml.g.cs

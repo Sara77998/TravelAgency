@@ -19,13 +19,6 @@ namespace TravelAgency.Controllers
         {
             this.uow = uow;
         }
-        //[ActionName("Kalendar")]
-        //GET: DodatnoController
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
 
         // GET: DodatnoController
         public ActionResult Index()

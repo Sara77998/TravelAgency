@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@*@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager*@
+
+
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -21,6 +26,9 @@
     <link rel="stylesheet" href="~/plugins/daterangepicker.css">
     @*table*@
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+    @*select dropdown*@
+    <link href="~/css/chosen.min.css" rel="stylesheet" />
+
 </head>
 
 
@@ -48,27 +56,28 @@
 
                 @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
                 {
-    <li class="nav-item" style="padding-right:1rem ; padding-left: 1rem;">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pocetna</a>
-    </li>
+                    <li class="nav-item" style="padding-right:1rem ; padding-left: 1rem;">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pocetna</a>
+                    </li>
                     <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Gost" asp-action="Index">Gosti</a>
                     </li>
-                                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="Index">Hoteli</a>
-                                    </li>
-                                                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
-                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Soba" asp-action="Index">Sobe</a>
-                                                    </li>
-                                                                    <div class="dropdown" style="padding-right: 1rem; padding-left: 1rem;">
-                                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                            Rezervacije
-                                                                        </button>
-                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Create">Dodaj rezervaciju</a>
-                                                                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Index">Lista rezervacija</a>
-                                                                        </div>
-                                                                    </div>}
+                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="Index">Hoteli</a>
+                    </li>
+                    <li class="nav-item" style="padding-right: 1rem; padding-left: 1rem;">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Soba" asp-action="Index">Sobe</a>
+                    </li>
+                    <div class="dropdown" style="padding-right: 1rem; padding-left: 1rem;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Rezervacije
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Create">Dodaj rezervaciju</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Rezervacija" asp-action="Index">Lista rezervacija</a>
+                        </div>
+                    </div>
+                }
 
             </ul>
 
@@ -81,11 +90,11 @@
             <div class="sidebar">
                 @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
                 {
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-            <a href="#" class="d-block">Agent</a>
-        </div>
-    </div>}
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="info">
+                            <a href="#" class="d-block">Agent @*@UserManager.GetUserName(User)*@</a>
+                        </div>
+                    </div>}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -97,45 +106,45 @@
                             <ul class="nav nav-treeview">
                                 @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn)
                                 {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Agent" asp-action="Tim">
-                                    <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
-                                    <p>Agencija - Tim</p>
-                                </a>
-                            </li>
-                            @*<li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="fa fa-sticky-note" aria-hidden="true"></i> &nbsp;&nbsp;
-            <p>Beleske</p>
-        </a>
-    </li>*@
-                                            <li class="nav-item">
-                                                <a class="nav-link" asp-controller="Dodatno" asp-action="Index">
-                                                    <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
-                                                    <p>Kalendar</p>
-                                                </a>
-                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" asp-controller="Dodatno" asp-action="Create">
-                                                                    <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
-                                                                    <p>Zakazi dogadjaj</p>
-                                                                </a>
-                                                            </li>
-                                                                            <hr />
-                                                                                            <li class="nav-item">
-                                                                                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
-                                                                                            </li>
- }
-                                                                                        else
-                                                                                        {
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Index"> <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Agent" asp-action="Tim">
+                                            <i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
+                                            <p>Agencija - Tim</p>
+                                        </a>
+                                    </li>
+                                    @*<li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="fa fa-sticky-note" aria-hidden="true"></i> &nbsp;&nbsp;
+                                                <p>Beleske</p>
+                                            </a>
+                                        </li>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Dodatno" asp-action="Index">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
+                                            <p>Kalendar</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Dodatno" asp-action="Create">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
+                                            <p>Zakazi dogadjaj</p>
+                                        </a>
+                                    </li>
+                                    <hr />
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Agent" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Agent" asp-action="Index"> <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
 
-                                                                            </li>
-                                                                                            <li class="nav-item">
-                                                                                                <a class="nav-link text-white" asp-controller="Agent" asp-action="Register"><i class="fas fa-registered"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</a>
-                                                                                            </li>
-}
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Agent" asp-action="Register"><i class="fas fa-registered"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</a>
+                                    </li>
+                                }
 
                             </ul>
                         </li>
@@ -179,6 +188,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/chosen.jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

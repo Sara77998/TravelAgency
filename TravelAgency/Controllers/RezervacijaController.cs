@@ -37,6 +37,7 @@ namespace TravelAgency.Controllers
         // GET: RezervacijaController/Create
         public ActionResult Create()
         {
+
             return View(Forma());
         }
 
@@ -61,8 +62,15 @@ namespace TravelAgency.Controllers
                     ModelState.AddModelError("", "Rezervacija mora da sadrzi bar jednog gosta!");                   
                     return View(Forma());     
                 }
-
-                uow.Rezervacija.Add(model.Rezervacija);
+                Rezervacija r = new Rezervacija
+                {
+                    AgentID = model.Rezervacija.AgentID,
+                    SobaID = model.SobaID,
+                    DatumOd = model.Rezervacija.DatumOd,
+                    DatumDo = model.Rezervacija.DatumDo,
+                    StavkeRezervacije = model.Rezervacija.StavkeRezervacije
+                };
+                uow.Rezervacija.Add(r);
                 uow.Commit();
                 return RedirectToAction("Index", "Rezervacija");
             }
@@ -70,6 +78,32 @@ namespace TravelAgency.Controllers
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return RedirectToAction("Create");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateGost([FromForm] Gost gost)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Create");
+                }
+                bool exists = uow.Gost.Search(g => g.Pasos == gost.Pasos).Any();
+                if (exists)
+                {
+                    ModelState.AddModelError("GostID", "Ovaj gost vec postoji u sistemu!");
+                    return View("Create");
+                }
+                uow.Gost.Add(gost);
+                uow.Commit();
+                return RedirectToAction(nameof(Create));
+            }
+            catch
+            {
+                return View("Create");
             }
         }
 
@@ -114,7 +148,9 @@ namespace TravelAgency.Controllers
                 return View();
             }
         }
-        [HttpPost]
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult AddGost(StavkaRezervacijeVM request)
         {
 
@@ -129,6 +165,7 @@ namespace TravelAgency.Controllers
             };
             return PartialView("StavkeRezervacijePartial", model);
         }
+
 
         public RezervacijaVM Forma()
         {
@@ -145,18 +182,8 @@ namespace TravelAgency.Controllers
             ViewBag.agenti = agenti;
 
 
-            List<SelectListItem> sobe = new List<SelectListItem>();
-            foreach (Soba s in uow.Soba.GetAll())
-            {
-                sobe.Add(new SelectListItem
-                {
-                    Value = s.SobaID.ToString(),
-                    Text = s.BrojSobe + ' ' + s.TipSobe
-                });
-            }
-            //prosledjuje se lista soba
-            ViewBag.sobe = sobe;
-
+            List<Hotel> hoteli = uow.Hotel.GetAll();
+            ViewBag.HotelList = new SelectList(hoteli, "HotelID", "Naziv");
 
             List<Gost> lista = uow.Gost.GetAll();
             List<SelectListItem> selectLista = lista.Select(g => new SelectListItem
@@ -167,9 +194,23 @@ namespace TravelAgency.Controllers
 
             RezervacijaVM model1 = new RezervacijaVM
             {
-                Gosti = selectLista
+                Gosti = selectLista,
+                SviGosti = lista
             };
             return model1;
+        }
+
+        public JsonResult GetSobaList(int HotelID)
+        {
+
+            List<Soba> sobe = uow.Soba.Search(s => s.HotelID == HotelID).ToList();
+            return Json(sobe.Select(s => new {
+                id = s.SobaID,
+                brojsobe = s.BrojSobe,
+                tipsobe = s.TipSobe
+            }).ToList());
+
+           
         }
     }
 }

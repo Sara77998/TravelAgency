@@ -21,12 +21,7 @@ namespace TravelAgency.Controllers
             this.uow = uow;
         }
 
-        // GET: SobaController
-        //public ActionResult Index()
-        //{
-        //    List<Soba> model = uow.Soba.GetAll();
-        //    return View(model);
-        //}
+      
 
         public ActionResult Index(string searching)
         {
